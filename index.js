@@ -5,7 +5,8 @@
   var checkLock = false;    // for throttling: skip check if true
   var defaults = {
     interval: 250,
-    force_process: false
+    force_process: false,
+    scroll_selector: window
   };
   var $window = $(window);
 
@@ -83,7 +84,7 @@
     appear: function (selector, options) {
       var opts = $.extend({}, defaults, options || {});
       // bind event handler
-      if (!checkBinded) {
+      if (typeof $(opts.scroll_selector).data('appear_binded') === 'undefined') {
         var onCheck = function () { // scroll event handler
           if (checkLock) {  // throttle
             return;
@@ -93,8 +94,10 @@
           setTimeout(process, opts.interval);
         };
 
-        $(window).scroll(onCheck).resize(onCheck);  // bind onCheck handler to window scroll and resize
-        checkBinded = true;
+        $(opts.scroll_selector).on('scroll',on_check);  // bind onCheck handler to scroll
+        $(window).resize(on_check);
+
+        $(opts.scroll_selector).data('appear_binded',true); // remember we bound  our event handler
       }
       // trigger initial check, if specified in options:
       if (opts.force_process) {
@@ -105,7 +108,7 @@
     },
     // force appearance check on elements
     force_appear: function () {
-      if (checkBinded) {
+      if (typeof $(opts.scroll_selector).data('appear_binded') !== 'undefined') {
         process();
         return true;
       }

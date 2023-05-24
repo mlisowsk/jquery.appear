@@ -25,7 +25,11 @@ npm i -S jquery-appear-original
 ## Usage
 
 ```javascript
-  $.appear('someselector', options); // It supports optional hash with "force_process" and "interval" keys. Check source code for details.
+  $.appear('someselector', {	// 'someselector' identifies the elements to check for appearance (selector or jQuery object)
+	  interval: 250,          // interval in milliseconds for checking for appearance (default 250ms)
+		force_process: false,   // if true, will do appearance check and trigger events upon initialization (default false)
+		scroll_selector: "#myscroller"  // selector or jQuery object for elements to check for scrolling (default: window)
+	});
 
   $('<div>test</div>').appear(); // It also supports raw DOM nodes wrapped in jQuery.
 
@@ -45,11 +49,12 @@ If you want to fire *appear* event for elements which are close to viewport but 
 
 Appear check can be forced by calling *$.force_appear()*. This is suitable in cases when page is in initial state (not scrolled and not resized) and when you want manually trigger appearance check.
 
-Also this plugin provides custom jQuery filter for manual checking element appearance.
+Also this plugin provides a custom jQuery filter for manual checking element appearance.
 
 ```javascript
   $('someselector').is(':appeared')
 ```
+
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
