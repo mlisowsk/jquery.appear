@@ -25,11 +25,11 @@ npm i -S jquery-appear-original
 ## Usage
 
 ```javascript
-  $.appear('someselector', {	// 'someselector' identifies the elements to check for appearance (selector or jQuery object)
-	  interval: 250,          // interval in milliseconds for checking for appearance (default 250ms)
-		force_process: false,   // if true, will do appearance check and trigger events upon initialization (default false)
-		scroll_selector: "#myscroller"  // selector or jQuery object for elements to check for scrolling (default: window)
-	});
+  $.appear('someselector', {  // 'someselector' identifies the elements to check for appearance (selector or jQuery object)
+    interval: 250,          // interval in milliseconds for checking for appearance (default 250ms)
+    force_process: false,   // if true, will do appearance check and trigger events upon initialization (default false)
+    scroll_selector: "#myscroller"  // selector or jQuery object for elements to check for scrolling (default: window)
+  });
 
   $('<div>test</div>').appear(); // It also supports raw DOM nodes wrapped in jQuery.
 
