@@ -94,8 +94,8 @@
           setTimeout(process, opts.interval);
         };
 
-        $(opts.scroll_selector).on('scroll',on_check);  // bind onCheck handler to scroll
-        $(window).resize(on_check);
+        $(opts.scroll_selector).on('scroll',onCheck);  // bind onCheck handler to scroll
+        $(window).resize(onCheck);
 
         $(opts.scroll_selector).data('appear_binded',true); // remember we bound  our event handler
       }
