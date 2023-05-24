@@ -3,7 +3,7 @@
 
   var checkBinded = false;  // remember whether we bound onCheck handler to scroll and resize events
   var checkLock = false;    // for throttling: skip check if true
-  var defaults = {
+  var opts = defaults = {
     interval: 250,
     force_process: false,
     scroll_selector: window
@@ -82,7 +82,7 @@
   // extend jQuery object with appear() function, so we can call $.appear(selector, options):
   $.extend({
     appear: function (selector, options) {
-      var opts = $.extend({}, defaults, options || {});
+      opts = $.extend({}, defaults, options || {});
       // bind event handler
       if (typeof $(opts.scroll_selector).data('appear_binded') === 'undefined') {
         var onCheck = function () { // scroll event handler
