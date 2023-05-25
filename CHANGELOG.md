@@ -1,6 +1,10 @@
 jquery-appear-original CHANGELOG
 ======================
 
+0.6.3
+-----
+- New option scroll_selector: specify scrollable element(s) other than window (following PR #30 from dopa on original repo).
+
 0.6.2
 -----
 - Bugfix
